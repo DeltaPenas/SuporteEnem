@@ -33,9 +33,10 @@ build/
 ### VS Code ###
 .vscode/
 
-# Credenciais locais
 .env
-.properties
-application.properties
-application-local.properties
-application-secret.properties
+.env.*
+!.env.example
+
+**/application.properties
+**/application-local.properties
+**/application-secret.properties
