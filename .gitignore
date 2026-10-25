@@ -36,5 +36,6 @@ build/
 # Credenciais locais
 .env
 .properties
+application.properties
 application-local.properties
 application-secret.properties
