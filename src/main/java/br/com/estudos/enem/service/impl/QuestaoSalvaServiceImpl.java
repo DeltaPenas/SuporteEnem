@@ -17,7 +17,6 @@ public class QuestaoSalvaServiceImpl implements QuestaoSalvaService {
 
     @Override
     public QuestaoSalva save(QuestaoSalva question) {
-        if(question.getId() == null){ throw new RuntimeException("um usuario deve ser informado para salvar a questão");}
         return questaoSalvaRepository.save(question);
     }
     @Override
@@ -32,6 +31,7 @@ public class QuestaoSalvaServiceImpl implements QuestaoSalvaService {
     }
     @Override
     public void delete(Long id) {
+
         questaoSalvaRepository.deleteById(id);
     }
     @Override
@@ -40,10 +40,12 @@ public class QuestaoSalvaServiceImpl implements QuestaoSalvaService {
     }
     @Override
     public List<QuestaoSalva> findByUsuarioId(Long id) {
+
         return questaoSalvaRepository.findByUsuarioId(id);
     }
     @Override
     public List<QuestaoSalva> findAll() {
+
         return questaoSalvaRepository.findAll();
     }
 

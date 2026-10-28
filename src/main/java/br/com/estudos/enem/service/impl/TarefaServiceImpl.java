@@ -16,7 +16,7 @@ public class TarefaServiceImpl implements TarefaService {
     @Override
     public Tarefa save(Tarefa newTask) {
         if(newTask.getTitulo() == null|| newTask.getTitulo().isBlank() || newTask.getUsuario() == null || !newTask.getUsuario().isAtivo()||
-                newTask.getDataCriacao() == null || newTask.getDataConclusao() == null){
+                newTask.getDataCriacao() == null){
             throw new IllegalArgumentException("tarefa Invalida");
         }
         return tarefaRepository.save(newTask);

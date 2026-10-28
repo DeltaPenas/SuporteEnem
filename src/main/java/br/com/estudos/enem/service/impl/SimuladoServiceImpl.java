@@ -20,7 +20,7 @@ public class SimuladoServiceImpl implements SimuladoService {
 
     @Override
     public Simulado save(Simulado newSimulation) {
-        if( newSimulation.getUsuario() == null || newSimulation.getDataInicio() == null || newSimulation.getStatus() == null){
+        if( newSimulation.getUsuario() == null || newSimulation.getDataInicio() == null || newSimulation.getStatus() == null || newSimulation.getQtdQuestao() <= 0){
             throw new RuntimeException("Erro ao criar o simulado");
         }
         return simuladoRepository.save(newSimulation);
