@@ -8,6 +8,7 @@ import br.com.estudos.enem.entity.Usuario;
 public interface UsuarioService {
     Usuario save(Usuario usuario);
     Usuario update(Long id, Usuario usuario);
+    Usuario updatePassword(Long id, String newPassword);
     void  delete(Long id);
     Usuario findById(Long id);
     Usuario disabled(Long id);
