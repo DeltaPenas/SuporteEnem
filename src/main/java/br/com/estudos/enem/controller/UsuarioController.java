@@ -1,6 +1,9 @@
 package br.com.estudos.enem.controller;
 import br.com.estudos.enem.service.UsuarioService;
 import br.com.estudos.enem.entity.Usuario;
+import br.com.estudos.enem.dto.UsuarioResponse;
+import br.com.estudos.enem.dto.UsuarioCadastroRequest;
+import br.com.estudos.enem.dto.UsuarioUpdateRequest;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -13,28 +16,57 @@ public class UsuarioController {
 
     public UsuarioController(UsuarioService usuarioService) {
 
+
         this.usuarioService = usuarioService;
     }
 
-    @PostMapping
-    public Usuario save(@RequestBody Usuario usuario) {
+    private UsuarioResponse converter(Usuario usuario) {
+        return new UsuarioResponse(
+                usuario.getId(),
+                usuario.getNome(),
+                usuario.getEmail(),
+                usuario.isAtivo()
+        );
+    }
 
-        return usuarioService.save(usuario);
+    @PostMapping
+    public UsuarioResponse save(@RequestBody UsuarioCadastroRequest request) {
+
+        Usuario usuario = new Usuario();
+
+        usuario.setNome(request.getNome());
+        usuario.setEmail(request.getEmail());
+        usuario.setSenhaHash(request.getSenha());
+
+        Usuario usuarioSalvo = usuarioService.save(usuario);
+
+        return converter(usuarioSalvo);
     }
 
     @PutMapping("/{id}")
-    public Usuario update(@RequestBody Usuario usuario) {
+    public UsuarioResponse update(@PathVariable Long id, @RequestBody UsuarioUpdateRequest request) {
 
-        return usuarioService.update(usuario.getId(), usuario);
+        Usuario usuario = new Usuario();
+
+        usuario.setNome(request.getNome());
+        usuario.setEmail(request.getEmail());
+
+        Usuario usuarioAtualizado = usuarioService.update(id, usuario);
+
+        return converter(usuarioAtualizado);
     }
+
     @DeleteMapping("/{id}")
     public void delete(@RequestBody Long id) {
 
         usuarioService.delete(id);
     }
     @GetMapping("/{id}")
-    public Usuario findById(@PathVariable Long id) {
-        return usuarioService.findById(id);
+    public UsuarioResponse findById(@PathVariable Long id) {
+
+        Usuario usuario = usuarioService.findById(id);
+
+        return converter(usuario);
     }
 
     @PatchMapping("/{id}/desativacao")

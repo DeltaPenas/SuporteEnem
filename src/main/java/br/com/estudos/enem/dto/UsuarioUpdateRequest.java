@@ -5,17 +5,17 @@ public class UsuarioUpdateRequest {
     private String nome;
     private String email;
 
-    private String getNome(){
+    public String getNome(){
         return nome;
     }
-    private void setNome(String nome){
+    public void setNome(String nome){
         this.nome = nome;
     }
 
-    private String getEmail(){
+    public String getEmail(){
         return email;
     }
-    private void setEmail(){
+    public void setEmail(){
         this.email = email;
     }
 }

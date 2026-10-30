@@ -1,5 +1,7 @@
 package br.com.estudos.enem.dto;
 
+import br.com.estudos.enem.entity.Usuario;
+
 public class UsuarioResponse {
 
     private long id;
@@ -42,6 +44,16 @@ public class UsuarioResponse {
     public void setAtivo(Boolean ativo){
         this.ativo = ativo;
     }
+
+    private UsuarioResponse converterParaResponse(Usuario usuario) {
+        return new UsuarioResponse(
+                usuario.getId(),
+                usuario.getNome(),
+                usuario.getEmail(),
+                usuario.isAtivo()
+        );
+    }
+
 
 }
 
