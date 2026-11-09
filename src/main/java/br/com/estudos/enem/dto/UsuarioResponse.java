@@ -29,8 +29,7 @@ public class UsuarioResponse {
     public String getNome(){
         return nome;
     }
-    public void setNome(String nome){
-        this.nome = nome;
+    public void setNome(String nome){this.nome = nome;
     }
     public String getEmail(){
         return email;
@@ -45,14 +44,7 @@ public class UsuarioResponse {
         this.ativo = ativo;
     }
 
-    private UsuarioResponse converterParaResponse(Usuario usuario) {
-        return new UsuarioResponse(
-                usuario.getId(),
-                usuario.getNome(),
-                usuario.getEmail(),
-                usuario.isAtivo()
-        );
-    }
+
 
 
 }

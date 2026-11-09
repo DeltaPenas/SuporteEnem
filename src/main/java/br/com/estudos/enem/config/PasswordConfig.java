@@ -12,4 +12,12 @@ public class PasswordConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+    /*
+    @Bean
+    public boolean passwordVerify(String password){
+
+
+    }
+
+     */
 }
